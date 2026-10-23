@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wiki Recovery Cloud</title>
+<style>body{max-width:760px;margin:64px auto;padding:0 24px;font:18px/1.65 system-ui;color:#172331;background:#f8fafc}h1,h2{line-height:1.2}h2{margin-top:48px}a{color:#165ac6}nav{display:flex;gap:24px}footer{margin-top:64px;font-size:14px;color:#536273}</style>
+<main>
+<h1>Wiki Recovery Cloud</h1>
+<p>A personal backup maintenance tool. It copies recovery packages from a private GitHub repository to its owner's private Google Drive backup folder, downloads and restores each package to verify it, and then removes only the verified redundant GitHub artifacts.</p>
+<p>This app is for its owner's account. It is not a public backup service and has no public sign-up.</p>
+<nav><a href="#privacy">Privacy policy</a><a href="#terms">Terms of use</a></nav>
+<section id="privacy"><h2>Privacy policy</h2>
+<p>The app requests Google Drive read-only access to retrieve existing backup files and per-file access to create and manage app-authorized backup and report files. Google's read-only permission covers the account's Drive; the implementation confines its file operations to the configured private backup folder. It also checks the account identity and the folder's privacy.</p>
+<p>Backup bytes and their metadata are processed on temporary GitHub-hosted runners to check file hashes, restore Git history and large-file objects, and validate the restored repository. Verification reports are stored in the private Drive backup folder. GitHub receives the backup data needed to perform these checks. Google Drive and GitHub process this data under their respective service terms.</p>
+<p>The dedicated authorization is stored in encrypted GitHub Actions Secrets. Credentials are excluded from verification reports and from restored-program environments. Routine operational status appears in private GitHub workflow logs. Disposable working copies are removed when the worker exits; the runner is temporary.</p>
+<p>Drive backups and reports are retained until their owner removes them. The worker does not delete Drive backups. It deletes only matching GitHub artifacts after fresh backup verification and successful report preservation.</p>
+<p>The app does not sell data, use it for advertising, or send backup content to an AI model. This information site has no analytics or cookies of its own. The hosting provider may keep ordinary service logs.</p>
+<p>The owner can stop future access by revoking the app in Google Account connections, removing its GitHub secret, and disabling the workflow. Revoking access does not itself erase previously retained backups or reports.</p>
+<p>Use and transfer of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including its Limited Use requirements.</p>
+</section>
+<section id="terms"><h2>Terms of use</h2>
+<p>This is an owner-operated personal utility, with no public service offering, subscription or service-level commitment. Only the configured owner's account is supported. Verification failures stop cleanup and require review. A successful check describes the package tested at that time; it is not a guarantee of future availability or of separate data that was not included in that package.</p>
+</section>
+<footer>Updated 23 October 2026. App information only; no backup files or credentials are published here.</footer>
+</main></html>
